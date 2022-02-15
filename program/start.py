@@ -12,8 +12,9 @@ from config import (
     OWNER_USERNAME,
     UPDATES_CHANNEL,
 )
+from driver.decorators import check_blacklist
 from program import __version__
-from driver.core import user, bot
+from driver.core import bot, me_bot, me_user
 from driver.filters import command, other_filters
 from driver.database.dbchat import add_served_chat, is_served_chat
 from driver.database.dbpunish import is_gbanned_user
@@ -56,15 +57,12 @@ async def _human_time_duration(seconds):
 @Client.on_message(
     command(["start", f"start@{BOT_USERNAME}"]) & filters.private & ~filters.edited
 )
+@check_blacklist()
 async def start_(c: Client, message: Message):
-    user_id = message.from_user.id
-    BOT_NAME = (await c.get_me()).first_name
-    if await is_gbanned_user(user_id):
-        await message.reply_text("❗️ **You've blocked from using this bot!**")
-        return
+    BOT_NAME = me_bot.first_name
     await message.reply_text(
         f"""✨ **Welcome {message.from_user.mention()} !**\n
-💭 [❰ 亗『𝐊𝐀𝐓𝐈𝐋』亗 MUSIC ❱](https://t.me/katil_vc_player_bot) **ALLOWS YOU TO PLAY MUSIC AND VIDEO ON GROUPS THROUGH THE NEW TELEGRAM's VOICE CHATS!**
+💭 [{BOT_NAME}](https://t.me/{BOT_USERNAME}) **Is a bot to play music and video in groups, through the Telegram Group video chat!**
 
 💡 **Find out all the Bot's commands and how they work by clicking on the » 📚 Commands button!**
 
@@ -74,26 +72,26 @@ async def start_(c: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "➕ APNE GROUP ME ADD KRE ➕",
-                        url=f"https://t.me/katil_vc_player_bot?startgroup=true",
+                        "➕ Add me to your Group ➕",
+                        url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                     )
                 ],
                 [InlineKeyboardButton("❓ Basic Guide", callback_data="user_guide")],
                 [
-                    InlineKeyboardButton("📚 COMMANDS", callback_data="command_list"),
-                    InlineKeyboardButton("༒★[•亗『𝐊𝐀𝐓𝐈𝐋』亗•]★", url=f"https://t.me/TERA_BAAP_KATIL"),
+                    InlineKeyboardButton("📚 Commands", callback_data="command_list"),
+                    InlineKeyboardButton("❤️ Donate", url=f"https://t.me/{OWNER_USERNAME}"),
                 ],
                 [
                     InlineKeyboardButton(
-                        "❖Ƭʜᴇ︻╦╤─🅻🅾️🆅🅴🆁🆂 🅿️🅾️🅸🅽🆃─╤╦︻ヅ", url=f"https://t.me/FULL_MASTI_CLUBS"
+                        "👥 Official Group", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "📣HEART BROKEN 💔 PERSON", url=f"https://t.me/heartbrokenperson1"
+                        "📣 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
                 ],
                 [
                     InlineKeyboardButton(
-                        "👤 ASSISTANT", url=f"https://t.me/KATIL_ASSISTANT"
+                        "🌐 Source Code", url="https://github.com/levina-lab/video-stream"
                     )
                 ],
             ]
@@ -105,23 +103,20 @@ async def start_(c: Client, message: Message):
 @Client.on_message(
     command(["alive", f"alive@{BOT_USERNAME}"]) & filters.group & ~filters.edited
 )
+@check_blacklist()
 async def alive(c: Client, message: Message):
-    user_id = message.from_user.id
-    if await is_gbanned_user(user_id):
-        await message.reply_text("❗️ **You've blocked from using this bot!**")
-        return
     chat_id = message.chat.id
     current_time = datetime.utcnow()
     uptime_sec = (current_time - START_TIME).total_seconds()
     uptime = await _human_time_duration(int(uptime_sec))
-    BOT_NAME = (await c.get_me()).first_name
+    BOT_NAME = me_bot.first_name
     
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("❖Ƭʜᴇ︻╦╤─🅻🅾️🆅🅴🆁🆂 🅿️🅾️🅸🅽🆃─╤╦︻ヅ", url=f"https://t.me/FULL_MASTI_CLUBS"),
+                InlineKeyboardButton("✨ Group", url=f"https://t.me/{GROUP_SUPPORT}"),
                 InlineKeyboardButton(
-                    "HEART BROKEN 💔 PERSON", url=f"https://t.me/heartbrokenperson1"
+                    "📣 Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
                 ),
             ]
         ]
@@ -138,11 +133,8 @@ async def alive(c: Client, message: Message):
 
 
 @Client.on_message(command(["ping", f"ping@{BOT_USERNAME}"]) & ~filters.edited)
+@check_blacklist()
 async def ping_pong(c: Client, message: Message):
-    user_id = message.from_user.id
-    if await is_gbanned_user(user_id):
-        await message.reply_text("❗️ **You've blocked from using this bot!**")
-        return
     start = time()
     m_reply = await message.reply_text("pinging...")
     delta_ping = time() - start
@@ -150,11 +142,8 @@ async def ping_pong(c: Client, message: Message):
 
 
 @Client.on_message(command(["uptime", f"uptime@{BOT_USERNAME}"]) & ~filters.edited)
+@check_blacklist()
 async def get_uptime(c: Client, message: Message):
-    user_id = message.from_user.id
-    if await is_gbanned_user(user_id):
-        await message.reply_text("❗️ **You've blocked from using this bot!**")
-        return
     current_time = datetime.utcnow()
     uptime_sec = (current_time - START_TIME).total_seconds()
     uptime = await _human_time_duration(int(uptime_sec))
@@ -183,8 +172,8 @@ async def new_chat(c: Client, m: Message):
         pass
     else:
         await add_served_chat(chat_id)
-    ass_uname = (await user.get_me()).username
-    bot_id = (await c.get_me()).id
+    ass_uname = me_user.username
+    bot_id = me_bot.id
     for member in m.new_chat_members:
         if chat_id in await blacklisted_chats():
             await m.reply(
@@ -199,18 +188,18 @@ async def new_chat(c: Client, m: Message):
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton("HEART BROKEN 💔 PERSON", url=f"https://t.me/heartbrokenperson1"),
-                            InlineKeyboardButton("❖Ƭʜᴇ︻╦╤─🅻🅾️🆅🅴🆁🆂 🅿️🅾️🅸🅽🆃─╤╦︻ヅ", url=f"https://t.me/FULL_MASTI_CLUBS")
+                            InlineKeyboardButton("📣 Channel", url=f"https://t.me/{UPDATES_CHANNEL}"),
+                            InlineKeyboardButton("💭 Support", url=f"https://t.me/{GROUP_SUPPORT}")
                         ],
                         [
-                            InlineKeyboardButton("👤 ASSISTANT", url="https://t.me/KATIL_ASSISTANT")
+                            InlineKeyboardButton("👤 Assistant", url=f"https://t.me/{ass_uname}")
                         ]
                     ]
                 )
             )
 
 
-chat_watcher_group = 425
+chat_watcher_group = 10
 
 @Client.on_message(group=chat_watcher_group)
 async def chat_watcher_func(_, message: Message):
