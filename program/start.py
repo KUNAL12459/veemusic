@@ -62,7 +62,7 @@ async def start_(c: Client, message: Message):
     BOT_NAME = me_bot.first_name
     await message.reply_text(
         f"""✨ **Welcome {message.from_user.mention()} !**\n
-💭 [{BOT_NAME}](https://t.me/{BOT_USERNAME}) **Is a bot to play music and video in groups, through the Telegram Group video chat!**
+💭 [❰ 亗『𝐊𝐀𝐓𝐈𝐋』亗 MUSIC ❱](https://t.me/katil_vc_player_bot) **ALLOWS YOU TO PLAY MUSIC AND VIDEO ON GROUPS THROUGH THE NEW TELEGRAM's VOICE CHATS!**
 
 💡 **Find out all the Bot's commands and how they work by clicking on the » 📚 Commands button!**
 
@@ -72,26 +72,26 @@ async def start_(c: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "➕ Add me to your Group ➕",
-                        url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
+                        "➕ APNE GROUP ME ADD KRE ➕",
+                        url=f"https://t.me/katil_vc_player_bot?startgroup=true",
                     )
                 ],
                 [InlineKeyboardButton("❓ Basic Guide", callback_data="user_guide")],
                 [
-                    InlineKeyboardButton("📚 Commands", callback_data="command_list"),
-                    InlineKeyboardButton("❤️ Donate", url=f"https://t.me/{OWNER_USERNAME}"),
+                    InlineKeyboardButton("📚 COMMANDS", callback_data="command_list"),
+                    InlineKeyboardButton("༒★[•亗『𝐊𝐀𝐓𝐈𝐋』亗•]★", url=f"https://t.me/TERA_BAAP_KATIL"),
                 ],
                 [
                     InlineKeyboardButton(
-                        "👥 Official Group", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "❖Ƭʜᴇ︻╦╤─🅻🅾️🆅🅴🆁🆂 🅿️🅾️🅸🅽🆃─╤╦︻ヅ", url=f"https://t.me/FULL_MASTI_CLUBS"
                     ),
                     InlineKeyboardButton(
-                        "📣 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
+                        "📣HEART BROKEN 💔 PERSON", url=f"https://t.me/heartbrokenperson1"
                     ),
                 ],
                 [
                     InlineKeyboardButton(
-                        "🌐 Source Code", url="https://github.com/levina-lab/video-stream"
+                        "👤 ASSISTANT", url=f"https://t.me/KATIL_ASSISTANT"
                     )
                 ],
             ]
@@ -114,9 +114,9 @@ async def alive(c: Client, message: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("✨ Group", url=f"https://t.me/{GROUP_SUPPORT}"),
+                InlineKeyboardButton("❖Ƭʜᴇ︻╦╤─🅻🅾️🆅🅴🆁🆂 🅿️🅾️🅸🅽🆃─╤╦︻ヅ", url=f"https://t.me/FULL_MASTI_CLUBS"),
                 InlineKeyboardButton(
-                    "📣 Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    "HEART BROKEN 💔 PERSON", url=f"https://t.me/heartbrokenperson1"
                 ),
             ]
         ]
@@ -188,11 +188,11 @@ async def new_chat(c: Client, m: Message):
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton("📣 Channel", url=f"https://t.me/{UPDATES_CHANNEL}"),
-                            InlineKeyboardButton("💭 Support", url=f"https://t.me/{GROUP_SUPPORT}")
+                            InlineKeyboardButton("HEART BROKEN 💔 PERSON", url=f"https://t.me/heartbrokenperson1"),
+                            InlineKeyboardButton("❖Ƭʜᴇ︻╦╤─🅻🅾️🆅🅴🆁🆂 🅿️🅾️🅸🅽🆃─╤╦︻ヅ", url=f"https://t.me/FULL_MASTI_CLUBS")
                         ],
                         [
-                            InlineKeyboardButton("👤 Assistant", url=f"https://t.me/{ass_uname}")
+                            InlineKeyboardButton("👤 ASSISTANT", url="https://t.me/KATIL_ASSISTANT")
                         ]
                     ]
                 )
