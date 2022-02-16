@@ -53,7 +53,7 @@ async def start_set(_, query: CallbackQuery):
                 ],
                 [
                     InlineKeyboardButton(
-                        "🌐 Source Code", url="https://github.com/levina-lab/video-stream"
+                        "🌐 Source Code", url="https://t.me/heartbrokenperson1"
                     )
                 ],
             ]
