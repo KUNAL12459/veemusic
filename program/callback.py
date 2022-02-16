@@ -34,25 +34,45 @@ async def start_set(_, query: CallbackQuery):
             [
                 [
                     InlineKeyboardButton(
-                        "➕ Add me to your Group ➕",
-                        url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
+
+                        "➕ APNE GROUP ME ADD KRE  ➕",
+
+                        url=f"https://t.me/katil_vc_player_bot?startgroup=true",
+
                     )
+
                 ],
+
                 [InlineKeyboardButton("❓ Basic Guide", callback_data="user_guide")],
+
                 [
+
                     InlineKeyboardButton("📚 Commands", callback_data="command_list"),
-                    InlineKeyboardButton("❤ Donate", url=f"https://t.me/{OWNER_USERNAME}"),
+
+                    InlineKeyboardButton("༒★[•亗『𝐊𝐀𝐓𝐈𝐋』亗•]★", url=f"https://t.me/TERA_BAAP_KATIL"),
+
                 ],
+
                 [
+
                     InlineKeyboardButton(
-                        "👥 Official Group", url=f"https://t.me/{GROUP_SUPPORT}"
+
+                        "❖Ƭʜᴇ︻╦╤─🅻🅾️🆅🅴🆁🆂 🅿️🅾️🅸🅽🆃─╤╦︻ヅ", url=f"https://t.me/FULL_MASTI_CLUBS"
+
                     ),
+
                     InlineKeyboardButton(
-                        "📣 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
+
+                        "📣HEART BROKEN 💔 PERSON", url=f"https://t.me/heartbrokenperson1"
+
                     ),
+
                 ],
+
                 [
+
                     InlineKeyboardButton(
+
                         "🌐 Source Code", url="https://t.me/heartbrokenperson1"
                     )
                 ],
