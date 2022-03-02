@@ -150,7 +150,7 @@ async def play(c: Client, m: Message):
                     title = songname
                     userid = m.from_user.id
                     image = await thumb(thumbnail, title, userid, ctitle)
-                    await suhu.edit("**🎵 亗『𝐊𝐀𝐓𝐈𝐋』亗 𝐌𝐮𝐬𝐢𝐜 🔊 𝐑𝐞𝐚𝐝𝐲 𝐅𝐨𝐫 𝐟𝐮𝐜𝐤 👅 𝐕𝐨𝐢𝐜𝐞 𝐂𝐡𝐚𝐭 🥀...**")
+                    await suhu.edit("🔄 Joining Group Call...")
                     await music_on(chat_id)
                     await add_active_chat(chat_id)
                     await calls.join_group_call(
@@ -182,14 +182,14 @@ async def play(c: Client, m: Message):
         else:
             if len(m.command) < 2:
                 await m.reply(
-                    "»✌️𝐖𝐡𝐚𝐭'𝐒 𝐓𝐡𝐞 ❤️ 𝐒𝐨𝐧𝐠 🎸 𝐘𝐨𝐮 🎧 𝐖𝐚𝐧𝐭 𝐓𝐨 𝐏𝐥𝐚𝐲 ▶️ ❤️**"
+                    "» reply to an **audio file** or **give something to search.**"
                 )
             else:
-                suhu = await c.send_message(chat_id, "🔎 **𝐅𝐢𝐧𝐝𝐢𝐧𝐠 💫 𝐓𝐡𝐞 𝐒𝐨𝐧𝐠 ❤️ ❰ 亗『𝐊𝐀𝐓𝐈𝐋』亗 MUSIC ❱...**")
+                suhu = await c.send_message(chat_id, "🔍 **Loading...**")
                 query = m.text.split(None, 1)[1]
                 search = ytsearch(query)
                 if search == 0:
-                    await suhu.edit("❌ **KUSH NHI MILA**")
+                    await suhu.edit("❌ **no results found.**")
                 else:
                     songname = search[0]
                     title = search[0]
@@ -220,7 +220,7 @@ async def play(c: Client, m: Message):
                             remove_if_exists(image)
                         else:
                             try:
-                                await suhu.edit("**🎵 亗『𝐊𝐀𝐓𝐈𝐋』亗 𝐌𝐮𝐬𝐢𝐜 🔊 𝐑𝐞𝐚𝐝𝐲 𝐅𝐨𝐫 𝐟𝐮𝐜𝐤 👅 𝐕𝐨𝐢𝐜𝐞 𝐂𝐡𝐚𝐭 🥀...**")
+                                await suhu.edit("🔄 Joining Group Call...")
                                 await music_on(chat_id)
                                 await add_active_chat(chat_id)
                                 await calls.join_group_call(
@@ -252,14 +252,14 @@ async def play(c: Client, m: Message):
     else:
         if len(m.command) < 2:
             await m.reply(
-                "»✌️𝐖𝐡𝐚𝐭'𝐒 𝐓𝐡𝐞 ❤️ 𝐒𝐨𝐧𝐠 🎸 𝐘𝐨𝐮 🎧 𝐖𝐚𝐧𝐭 𝐓𝐨 𝐏𝐥𝐚𝐲 ▶️ ❤️**"
+                "» reply to an **audio file** or **give something to search.**"
             )
         else:
-            suhu = await c.send_message(chat_id, "🔎 **𝐅𝐢𝐧𝐝𝐢𝐧𝐠 💫 𝐓𝐡𝐞 𝐒𝐨𝐧𝐠 ❤️ ❰ 亗『𝐊𝐀𝐓𝐈𝐋』亗 MUSIC ❱...**")
+            suhu = await c.send_message(chat_id, "🔍 **Loading...**")
             query = m.text.split(None, 1)[1]
             search = ytsearch(query)
             if search == 0:
-                await suhu.edit("❌ **KUSH NHI MILA**")
+                await suhu.edit("❌ **no results found.**")
             else:
                 songname = search[0]
                 title = search[0]
@@ -288,7 +288,7 @@ async def play(c: Client, m: Message):
                         remove_if_exists(image)
                     else:
                         try:
-                            await suhu.edit("**🎵 亗『𝐊𝐀𝐓𝐈𝐋』亗 𝐌𝐮𝐬𝐢𝐜 🔊 𝐑𝐞𝐚𝐝𝐲 𝐅𝐨𝐫 𝐟𝐮𝐜𝐤 👅 𝐕𝐨𝐢𝐜𝐞 𝐂𝐡𝐚𝐭 🥀...**")
+                            await suhu.edit("🔄 Joining Group Call...")
                             await music_on(chat_id)
                             await add_active_chat(chat_id)
                             await calls.join_group_call(
