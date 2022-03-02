@@ -162,7 +162,7 @@ async def vplay(c: Client, m: Message):
                 )
                 remove_if_exists(image)
             else:
-                await loser.edit("🎵 亗『𝐊𝐀𝐓𝐈𝐋』亗 𝐌𝐮𝐬𝐢𝐜 🔊 𝐑𝐞𝐚𝐝𝐲 𝐅𝐨𝐫 𝐟𝐮𝐜𝐤 👅 𝐕𝐨𝐢𝐜𝐞 𝐂𝐡𝐚𝐭 🥀...")
+                await loser.edit("🔄 Joining Group Call...")
                 gcname = m.chat.title
                 ctitle = await CHAT_TITLE(gcname)
                 title = songname
@@ -200,16 +200,16 @@ async def vplay(c: Client, m: Message):
         else:
             if len(m.command) < 2:
                 await m.reply(
-                    "»✌️𝐖𝐡𝐚𝐭'𝐒 𝐓𝐡𝐞 ❤️ 𝐒𝐨𝐧𝐠 🎸 𝐘𝐨𝐮 🎧 𝐖𝐚𝐧𝐭 𝐓𝐨 𝐏𝐥𝐚𝐲 ▶️ ❤️**"
+                    "» reply to an **video file** or **give something to search.**"
                 )
             else:
-                loser = await c.send_message(chat_id, "🔎 **𝐅𝐢𝐧𝐝𝐢𝐧𝐠 💫 𝐓𝐡𝐞 𝐒𝐨𝐧𝐠 ❤️ ❰ 亗『𝐊𝐀𝐓𝐈𝐋』亗 MUSIC ❱...**")
+                loser = await c.send_message(chat_id, "🔍 **Loading...**")
                 query = m.text.split(None, 1)[1]
                 search = ytsearch(query)
                 Q = 720
                 amaze = HighQualityVideo()
                 if search == 0:
-                    await loser.edit("❌ **KUSH NHI MILA**")
+                    await loser.edit("❌ **no results found.**")
                 else:
                     songname = search[0]
                     title = search[0]
@@ -240,7 +240,7 @@ async def vplay(c: Client, m: Message):
                             remove_if_exists(image)
                         else:
                             try:
-                                await loser.edit("**🎵 亗『𝐊𝐀𝐓𝐈𝐋』亗 𝐌𝐮𝐬𝐢𝐜 🔊 𝐑𝐞𝐚𝐝𝐲 𝐅𝐨𝐫 𝐟𝐮𝐜𝐤 👅 𝐕𝐨𝐢𝐜𝐞 𝐂𝐡𝐚𝐭 🥀...**")
+                                await loser.edit("🔄 Joining Group Call...")
                                 await music_on(chat_id)
                                 await add_active_chat(chat_id)
                                 await calls.join_group_call(
@@ -271,16 +271,16 @@ async def vplay(c: Client, m: Message):
     else:
         if len(m.command) < 2:
             await m.reply(
-                "»✌️𝐖𝐡𝐚𝐭'𝐒 𝐓𝐡𝐞 ❤️ 𝐒𝐨𝐧𝐠 🎸 𝐘𝐨𝐮 🎧 𝐖𝐚𝐧𝐭 𝐓𝐨 𝐏𝐥𝐚𝐲 ▶️ ❤️**"
+                "» reply to an **video file** or **give something to search.**"
             )
         else:
-            loser = await c.send_message(chat_id, "🔎 **𝐅𝐢𝐧𝐝𝐢𝐧𝐠 💫 𝐓𝐡𝐞 𝐒𝐨𝐧𝐠 ❤️ ❰ 亗『𝐊𝐀𝐓𝐈𝐋』亗 MUSIC ❱...**")
+            loser = await c.send_message(chat_id, "🔍 **Loading...**")
             query = m.text.split(None, 1)[1]
             search = ytsearch(query)
             Q = 720
             amaze = HighQualityVideo()
             if search == 0:
-                await loser.edit("❌ **KUSH NHI MILA**")
+                await loser.edit("❌ **no results found.**")
             else:
                 songname = search[0]
                 title = search[0]
@@ -311,7 +311,7 @@ async def vplay(c: Client, m: Message):
                         remove_if_exists(image)
                     else:
                         try:
-                            await loser.edit("**🎵 亗『𝐊𝐀𝐓𝐈𝐋』亗 𝐌𝐮𝐬𝐢𝐜 🔊 𝐑𝐞𝐚𝐝𝐲 𝐅𝐨𝐫 𝐟𝐮𝐜𝐤 👅 𝐕𝐨𝐢𝐜𝐞 𝐂𝐡𝐚𝐭 🥀...**")
+                            await loser.edit("🔄 Joining Group Call...")
                             await music_on(chat_id)
                             await add_active_chat(chat_id)
                             await calls.join_group_call(
@@ -392,7 +392,7 @@ async def vstream(c: Client, m: Message):
         if len(m.command) == 2:
             link = m.text.split(None, 1)[1]
             Q = 720
-            loser = await c.send_message(chat_id, "🔎 **𝐅𝐢𝐧𝐝𝐢𝐧𝐠 💫 𝐓𝐡𝐞 𝐒𝐨𝐧𝐠 ❤️ ❰ 亗『𝐊𝐀𝐓𝐈𝐋』亗 MUSIC ❱...**")
+            loser = await c.send_message(chat_id, "🔍 **Loading...**")
         elif len(m.command) == 3:
             op = m.text.split(None, 1)[1]
             link = op.split(None, 1)[0]
@@ -404,7 +404,7 @@ async def vstream(c: Client, m: Message):
                 await m.reply(
                     "» only 720, 480, 360 allowed\n\n💡 now streaming video in **720p**"
                 )
-            loser = await c.send_message(chat_id, "🔎 **𝐅𝐢𝐧𝐝𝐢𝐧𝐠 💫 𝐓𝐡𝐞 𝐒𝐨𝐧𝐠 ❤️ ❰ 亗『𝐊𝐀𝐓𝐈𝐋』亗 MUSIC ❱...**")
+            loser = await c.send_message(chat_id, "🔍 **Loading...**")
         else:
             await m.reply("`/vstream` {link} {720/480/360}")
 
@@ -438,7 +438,7 @@ async def vstream(c: Client, m: Message):
                 elif Q == 360:
                     amaze = LowQualityVideo()
                 try:
-                    await loser.edit("**🎵 亗『𝐊𝐀𝐓𝐈𝐋』亗 𝐌𝐮𝐬𝐢𝐜 🔊 𝐑𝐞𝐚𝐝𝐲 𝐅𝐨𝐫 𝐟𝐮𝐜𝐤 👅 𝐕𝐨𝐢𝐜𝐞 𝐂𝐡𝐚𝐭 🥀...**")
+                    await loser.edit("🔄 Joining Group Call...")
                     await music_on(chat_id)
                     await add_active_chat(chat_id)
                     await calls.join_group_call(
